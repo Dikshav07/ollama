@@ -70,3 +70,12 @@ type Batch struct {
 	// models or for batches without multimodal elements.
 	Multimodal []MultimodalIndex
 }
+
+// SetMetadata safely sets a key-value pair in the Batch's Metadata map.
+// It initializes the map if it is currently nil.
+func (b *Batch) SetMetadata(key string, value any) {
+	if b.Metadata == nil {
+		b.Metadata = make(map[string]any)
+	}
+	b.Metadata[key] = value
+}
